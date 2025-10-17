@@ -1,0 +1,34 @@
+//forward interpolation//
+from numpy import*
+from math import*
+x=[1,2,3,4,5]
+y=[40,60,65,50,18]
+n=len(x)
+d=zeros([n,n+1])
+for i in range(n):
+    d[i,0]=x[i]
+    d[i,1]=y[i]
+    print("the given observation are")
+    for i in range(n):
+        print(d[i,1],end=" ")
+    print("\n")
+    print('the difference table')
+    print('difference table')
+for j in range(2,n+1):
+    for i in range(0,n-j+1):
+        d[i,j]=(d[i+1,j-1]-d[i,j-1])/(d[i+j-1,0]-d[i,0])
+for i in range(0,n):
+    print('\n')
+    for j in range(0,n+1):
+        print('\t',d[i,j],end="")
+    print("\n")
+    X=3.5 
+    h=x[1]-x[0]
+    print('the interval difference h is=',h)
+    u=(X-d[0,0])/h
+    s=d[0,1]+u*d[0,2]
+    temp=u
+    for i in range(2,n-1):
+        temp=temp*(u-i-1)
+        s=s+temp*d[0,i+1]/factorial(i)
+        print('the value of x at 3.5 is',s)
