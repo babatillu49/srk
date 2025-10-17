@@ -1,0 +1,21 @@
+//regula falsi method //
+def f(x):
+    return x**3-x-1
+print(" to obtain the location of at least one real root")
+a= float(input('\n the value of first real number is\t:'))
+b= float(input('\n the value of second real number is\t:'))
+while((f(a)*f(b))>0):
+    a=float(input('the value of first real number is\t:'))
+    b=float(input('the value of scond real number is\t:'))
+e=float(input('enter the values of error is\t:'))
+c=(a+b)/2
+i=1
+print("\n to obtain all iteration correct upto given decimal")
+while(abs(f(c))>e):
+    c=(a*f(b)-b*f(a))/(f(b)-f(a))
+    if f(a)*f(c)<0:
+        b=c
+    else:
+        a=c
+        print("\n the",i,"iteration of best approximate root""\t",round(c,4),"\t""with its value""\t",round(f(c),4))
+        i=i+1
